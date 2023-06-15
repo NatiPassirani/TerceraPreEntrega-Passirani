@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Datos</title>
+</head>
+<body>
+    <h1>Buscar Datos</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="termino">Término de búsqueda:</label>
+        <input type="text" name="termino"><br>
+        <input type="submit" value="Buscar">
+    </form>
+
+    {% if resultados_capacitacion %}
+        <h2>Resultados de Capacitación:</h2>
+        <ul>
+        {% for capacitacion in resultados_capacitacion %}
+            <li>{{ capacitacion.titulo }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if resultados_contacto %}
+        <h2>Resultados de Contacto:</h2>
+        <ul>
+        {% for contacto in resultados_contacto %}
+            <li>{{ contacto.nombre }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if resultados_suscripcion %}
+        <h2>Resultados de Suscripción:</h2>
+        <ul>
+        {% for suscripcion in resultados_suscripcion %}
+            <li>{{ suscripcion.email }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
